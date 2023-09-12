@@ -1,0 +1,20 @@
+version: '3'
+services: 
+  mysql:
+    image: mysql:latest
+    container-name: mysql-container
+    port:
+      - 8000:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: volumemysql123
+      MYSQL_DATABASE: bookstore
+      MYSQL_USER: volumemysql
+      MYSQL_PASSWORD: volumemysql123
+    volumes: 
+      - mysql-data:/var/lib/mysql/data
+  
+
+
+volumes:
+  mysql-data:
+    driver: local
