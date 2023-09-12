@@ -7,8 +7,8 @@ import (
 
 type Book struct {
 	gorm.Model
-	Name        string `gorm:"column:name" json:"name"`
 	Author      string `gorm:"column:author" json:"author"`
+	Name        string `gorm:"column:name" json:"name"`
 	Publication string `gorm:"column:publication" json:"publication"`
 }
 
@@ -39,8 +39,8 @@ func GetBookById(id int) (*Book, *gorm.DB) {
 	return &newBook, db
 }
 
-func DeleteBook(id int) Book {
+func DeleteBook(Id int) Book {
 	var newBook Book
-	db.Find("ID=?", id).Delete(newBook)
+	db.Where("ID=?", Id).Delete(&newBook)
 	return newBook
 }
